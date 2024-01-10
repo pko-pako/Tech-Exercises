@@ -2,6 +2,7 @@
 #include <iostream>
 #include "randomTests.h"
 
+
 typedef int (__cdecl *MYPROC)(int, int); 
 
 int main(int argc, char *argv[])
