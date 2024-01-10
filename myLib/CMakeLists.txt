@@ -4,7 +4,7 @@ project(myLib VERSION 1.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_library(myLib SHARED
+add_library(myLib
     randomTests.cpp
 )
 

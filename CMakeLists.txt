@@ -14,6 +14,7 @@ set(SOURCES
 )
 
 add_subdirectory(myLib)
+add_subdirectory(myDynamicLib)
 
 # Add an executable with the above sources
 add_executable(hello_headers ${SOURCES})
@@ -25,4 +26,6 @@ target_include_directories(hello_headers PUBLIC
     "${PROJECT_SOURCE_DIR}/include"
 )
 
-target_link_libraries(hello_headers PUBLIC randomTests)
+target_link_libraries(hello_headers
+PUBLIC 
+    myLib )
