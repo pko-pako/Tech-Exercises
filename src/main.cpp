@@ -7,7 +7,7 @@ typedef int (__cdecl *MYPROC)(int, int);
 int main(int argc, char *argv[])
 {
    int a = 1;
-   HINSTANCE hinstLib = LoadLibrary(TEXT("D:\\PersonalProjects\\Tech-Exercises\\build\\myDynamicLib\\Debug\\myDynamicLib.dll"));
+   HINSTANCE hinstLib = LoadLibrary(TEXT("..\\myDynamicLib\\Debug\\myDynamicLib.dll"));
 
     if (hinstLib != NULL) 
     {
@@ -27,6 +27,6 @@ int main(int argc, char *argv[])
 
    Tosho t(42);
 
-   std::cout << "tosho is " << t.b << " sum " << sum(3,4) << " 3==3 = " << equals(3,3) << " 7*4=" << a <<std::endl;
+   std::cout << "tosho is " << t.b << " 3+4=" << sum(3,4) << " 3 ravno li e na 3 = " << equals(3,3) << " 7*14=" << a <<std::endl;
    return 0;
 }
