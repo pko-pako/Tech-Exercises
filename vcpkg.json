@@ -1,0 +1,15 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+  "name": "gosho",
+  "version": "1.0.0",
+  "dependencies": [
+    {
+      "name": "boost-asio",
+      "version>=": "1.83.0"
+    },
+	{
+	  "name": "gtest"
+	}
+  ],
+  "builtin-baseline": "57fee154cc4068542740b4b5775343d9fd83413e"
+}

@@ -3,6 +3,7 @@
 # $ cmake --version
 cmake_minimum_required(VERSION 3.5)
 
+set(CMAKE_TOOLCHAIN_FILE "D:/Libraries_Source/vcpkg/scripts/buildsystems/vcpkg.cmake")
 # Set the project name
 project (hello_headers)
 
