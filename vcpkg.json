@@ -7,9 +7,9 @@
       "name": "boost-asio",
       "version>=": "1.83.0"
     },
-	{
-	  "name": "gtest"
-	}
+    {
+      "name": "gtest"
+    }
   ],
   "builtin-baseline": "57fee154cc4068542740b4b5775343d9fd83413e"
 }
