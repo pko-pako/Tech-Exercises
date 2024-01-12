@@ -16,17 +16,11 @@ jobs:
       # Set fail-fast to false to ensure that feedback is delivered for all matrix combinations. Consider changing this to true when your workflow is stable.
       fail-fast: false
 
+    env:
+      VCPKG_ROOT: '${{ github.workspace }}/vcpkg'
+
     steps:
     - uses: actions/checkout@v3
-
-    - name: Set VCPKG_ROOT
-      run: export VCPKG_ROOT=$(command -v vcpkg | xargs dirname)
-
-    - name: Check vcpkg
-      run: echo $VCPKG_ROOT
-
-    - name: Find vcpkg
-      run: find / -name date
 
     - name: Set reusable strings
       # Turn repeated input strings (such as the build output directory) into step outputs. These step outputs can be used throughout the workflow file.
