@@ -18,7 +18,7 @@ set(SOURCES
 
 add_subdirectory(myLib)
 add_subdirectory(myLib.Test)
-add_subdirectory(myDynamicLib)
+# add_subdirectory(myDynamicLib)
 
 # Add an executable with the above sources
 add_executable(hello_headers ${SOURCES})
