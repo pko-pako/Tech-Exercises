@@ -4,10 +4,6 @@
   "version": "1.0.0",
   "dependencies": [
     {
-      "name": "boost-asio",
-      "version>=": "1.83.0"
-    },
-    {
       "name": "gtest"
     }
   ],
