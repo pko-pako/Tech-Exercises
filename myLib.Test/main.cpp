@@ -4,6 +4,7 @@
 // gtest_main.cc will be used from vcpkg directory
 int main(int argc, char** argv) {
   ::testing::InitGoogleTest(&argc, argv);
+
   int runResult = RUN_ALL_TESTS();
 
   return runResult;
