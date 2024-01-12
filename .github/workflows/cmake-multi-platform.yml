@@ -14,6 +14,18 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
         compiler: [g++, cl]
+        include:
+          - os: windows-latest
+            c_compiler: cl
+            cpp_compiler: cl
+          - os: ubuntu-latest
+            c_compiler: gcc
+            cpp_compiler: g++
+        exclude:
+          - os: windows-latest
+            c_compiler: gcc
+          - os: ubuntu-latest
+            c_compiler: cl
 
     env:
       VCPKG_ROOT: '/usr/local/share/vcpkg'
@@ -30,8 +42,8 @@ jobs:
     - name: Configure CMake
       run: >
         cmake -B ${{ steps.strings.outputs.build-output-dir }}
-        -DCMAKE_CXX_COMPILER=${{ matrix.compiler }}
-        -DCMAKE_C_COMPILER=${{ matrix.compiler }}
+        -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
+        -DCMAKE_C_COMPILER=${{ matrix.c_compiler }}
         -DCMAKE_BUILD_TYPE=Debug
         -S ${{ github.workspace }}
 
