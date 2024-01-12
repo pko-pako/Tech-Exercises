@@ -17,7 +17,7 @@ jobs:
       fail-fast: false
 
     env:
-      VCPKG_ROOT: '${{ github.workspace }}/vcpkg'
+      VCPKG_ROOT: '/usr/local/share/vcpkg'
 
     steps:
     - uses: actions/checkout@v3
