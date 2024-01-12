@@ -7,6 +7,8 @@ set(CMAKE_TOOLCHAIN_FILE "D:/Libraries_Source/vcpkg/scripts/buildsystems/vcpkg.c
 # Set the project name
 project (hello_headers)
 
+enable_testing()
+
 set(CMAKE_CXX_STANDARD 20)
 
 # Create a sources variable with a link to all cpp files to compile
@@ -17,8 +19,6 @@ set(SOURCES
 add_subdirectory(myLib)
 add_subdirectory(myLib.Test)
 add_subdirectory(myDynamicLib)
-
-add_test(AllTestsInMain main)
 
 # Add an executable with the above sources
 add_executable(hello_headers ${SOURCES})

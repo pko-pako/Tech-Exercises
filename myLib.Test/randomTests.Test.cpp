@@ -11,7 +11,7 @@ namespace randomTestsTest
 
   TEST(randomTestsTest, Equals) {
     bool result = equals(1,5);
-    bool expected = false;
+    bool expected = true;
     EXPECT_EQ(result, expected);
   }
 }
