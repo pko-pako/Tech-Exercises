@@ -5,6 +5,8 @@ project (tech-exercises)
 
 enable_testing()
 
+find_package(Boost REQUIRED)
+
 set(CMAKE_CXX_STANDARD 20)
 
 # Create a sources variable with a link to all cpp files to compile
@@ -23,6 +25,8 @@ target_include_directories(tech-exercises PUBLIC
     "${PROJECT_SOURCE_DIR}"
     "${PROJECT_SOURCE_DIR}/include"
 )
+
+target_link_libraries(tech-exercises PRIVATE Boost::headers)
 
 target_link_libraries(tech-exercises
 PUBLIC 
