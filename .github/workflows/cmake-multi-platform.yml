@@ -1,4 +1,4 @@
-name: tech-exercises
+name: build-and-test
 
 on:
   push:
