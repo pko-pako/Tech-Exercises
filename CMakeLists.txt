@@ -1,9 +1,5 @@
-# Set the minimum version of CMake that can be used
-# To find the cmake version run
-# $ cmake --version
 cmake_minimum_required(VERSION 3.5)
 
-# set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake")
 # Set the project name
 project (hello_headers)
 
@@ -17,14 +13,12 @@ set(SOURCES
 )
 
 add_subdirectory(myLib)
+add_subdirectory(myDynamicLib)
 add_subdirectory(myLib.Test)
-# add_subdirectory(myDynamicLib)
 
 # Add an executable with the above sources
 add_executable(hello_headers ${SOURCES})
 
-# Set the directories that should be included in the build command for this target
-# when running g++ these will be included as -I/directory/path/
 target_include_directories(hello_headers PUBLIC 
     "${PROJECT_SOURCE_DIR}"
     "${PROJECT_SOURCE_DIR}/include"
@@ -32,4 +26,12 @@ target_include_directories(hello_headers PUBLIC
 
 target_link_libraries(hello_headers
 PUBLIC 
-    myLib )
+    myLib
+    myDynamicLib )
+
+if(MSVC)
+  add_custom_command(TARGET hello_headers POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_RUNTIME_DLLS:hello_headers> $<TARGET_FILE_DIR:hello_headers>
+    COMMAND_EXPAND_LISTS
+  )
+endif()

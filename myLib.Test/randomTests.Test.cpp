@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include "randomTests.h"
+#include "randomTestsDynamic.h"
 
 namespace randomTestsTest
 {
@@ -12,6 +13,12 @@ namespace randomTestsTest
   TEST(randomTestsTest, Equals) {
     bool result = equals(1,5);
     bool expected = false;
+    EXPECT_EQ(result, expected);
+  }
+
+  TEST(randomTestsDynamicTest, Multiply) {
+    int result = multiply(3,5);
+    int expected = 15;
     EXPECT_EQ(result, expected);
   }
 }
