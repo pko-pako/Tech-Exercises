@@ -1,4 +1,4 @@
-#include "randomTestsDynamic.h"
+#include "actionsDynamic.h"
 
 int multiply(int a, int b){
     return a * b;

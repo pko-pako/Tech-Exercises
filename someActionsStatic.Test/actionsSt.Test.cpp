@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
-#include "randomTests.h"
-#include "randomTestsDynamic.h"
+#include "actionsStatic.h"
+#include "actionsDynamic.h"
 
 namespace randomTestsTest
 {

@@ -1,6 +1,6 @@
 #include <iostream>
-#include "randomTests.h"
-#include "randomTestsDynamic.h"
+#include "actionsStatic.h"
+#include "actionsDynamic.h"
 
 int main(int argc, char *argv[])
 {

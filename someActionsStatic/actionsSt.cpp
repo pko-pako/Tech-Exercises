@@ -1,4 +1,4 @@
-#include "randomTests.h"
+#include "actionsStatic.h"
 
 Tosho::Tosho(int a)
 {
