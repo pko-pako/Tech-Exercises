@@ -9,5 +9,5 @@ updates:
     schedule:
       # Check for updates to GitHub Actions every day
       interval: daily
-      time: "16:55"
+      time: "17:30"
       timezone: Europe/Athens
