@@ -5,9 +5,8 @@ updates:
 
   - package-ecosystem: "github-actions"
     directory: "/"
-    target-branch: "dep-bot-test-2"
     schedule:
       # Check for updates to GitHub Actions every day
       interval: daily
-      time: "13:40"
+      time: "13:47"
       timezone: Europe/Athens
