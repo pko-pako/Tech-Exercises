@@ -55,7 +55,7 @@ jobs:
       VCPKG_ROOT: '/usr/local/share/vcpkg'
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - uses: ilammy/msvc-dev-cmd@v1
       with:
@@ -72,5 +72,5 @@ jobs:
       run: ctest --preset ${{ matrix.platform }}-${{ matrix.build_type }}
 
     - name: gosho
-      uses: actions/setup-go@v3
+      uses: actions/setup-go@v5
 
