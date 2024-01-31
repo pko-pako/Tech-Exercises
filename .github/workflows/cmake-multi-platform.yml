@@ -72,5 +72,5 @@ jobs:
       run: ctest --preset ${{ matrix.platform }}-${{ matrix.build_type }}
 
     - name: gosho
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v4
 
