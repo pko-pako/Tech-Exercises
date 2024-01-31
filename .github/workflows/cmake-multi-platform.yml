@@ -55,7 +55,7 @@ jobs:
       VCPKG_ROOT: '/usr/local/share/vcpkg'
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
 
     - uses: ilammy/msvc-dev-cmd@v1
       with:
