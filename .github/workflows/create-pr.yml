@@ -16,17 +16,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Create Branch
-        run: git checkout -b $ME
-
-      - name: Update vcpkg baseline
-        run: $VCPKG_ROOT/vcpkg x-update-baseline
-
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v5
+      - name: Open PR
+        id: open_pr
+        uses: rematocorp/open-pull-request-action@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN}}
-          title: "Pull Request Title"
-          body: "Description of the pull request."
-          branch: ${{env.ME}}
-          base: main  # Change this to your desired base branch
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          from-branch: test-test-1
+          to-branch: main
+          repository-owner: pko-pako
+          repository: Tech-Excercises
