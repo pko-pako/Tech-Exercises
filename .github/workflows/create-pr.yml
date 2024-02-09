@@ -15,6 +15,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+      
+      - name: Try commiting something
+        run: |
+            echo "tosho" > ./tosho.txt
+            git add .
+            git commit -m "Automated changes"
 
       - name: Create Pull Request
         run: gh pr create --title $PR_TITLE --body $PR_BODY --base main --head ${GITHUB_REF##*/}
