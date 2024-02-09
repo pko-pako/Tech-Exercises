@@ -25,3 +25,7 @@ jobs:
           to-branch: main
           repository-owner: pko-pako
           repository: Tech-Exercises
+
+      - name: Echo mergeable PR number
+        if: always()
+        run: echo ${{ steps.open_pr.outputs.pull_number }}
