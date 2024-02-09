@@ -15,4 +15,3 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.PR_RIGHTS_GITHUB_TOKEN }}
-          branch: main
