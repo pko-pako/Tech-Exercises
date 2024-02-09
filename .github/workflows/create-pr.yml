@@ -1,32 +1,18 @@
-name: PR-testing
+name: Create Pull Request
 
 on:
   push:
-  
-
-env:
-  ME: test-test-1
-  VCPKG_ROOT: '/usr/local/share/vcpkg'
 
 jobs:
-  check:
-    name: PR-testing
+  create_pull_request:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Create Branch
-        run: git checkout -b $ME
-
-      - name: Update vcpkg baseline
-        run: $VCPKG_ROOT/vcpkg x-update-baseline
+      - name: Checkout code
+        uses: actions/checkout@v2
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v5
+        uses: peter-evans/create-pull-request@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN}}
-          title: "Pull Request Title"
-          body: "Description of the pull request."
-          branch: ${{env.ME}}
-          base: main  # Change this to your desired base branch
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
