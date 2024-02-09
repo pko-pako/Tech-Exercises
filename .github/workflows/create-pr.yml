@@ -1,10 +1,13 @@
 name: Create Pull Request
 
 on:
-  push:
+  workflow_dispatch:
+    
 
 env:
   GH_TOKEN: ${{ secrets.PR_RIGHTS_GITHUB_TOKEN}}
+  PR_BODY: updating-version
+  PR_TITLE: updating-version
 
 jobs:
   create_pull_request:
@@ -14,4 +17,4 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Create Pull Request
-        run: gh pr create --title "Your pull request title" --body "Your pull request description" --base main --head test-test-1
+        run: gh pr create --title $PR_TITLE --body $PR_BODY --base main --head ${GITHUB_REF##*/}
