@@ -1,27 +1,20 @@
-name: PR-testing
+name: Create Pull Request
 
 on:
-  push:
-  
+  workflow_dispatch:
+    
 
 env:
-  ME: test-test-1
-  VCPKG_ROOT: '/usr/local/share/vcpkg'
+  GH_TOKEN: ${{ secrets.PR_RIGHTS_GITHUB_TOKEN}}
+  PR_BODY: updating-version
+  PR_TITLE: updating-version
 
 jobs:
-  create-pr-on-push:
+  create_pull_request:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    
-    - name: Create pull request
-      uses: thomaseizinger/create-pull-request@master
-      with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        head: ${{ github.ref }}
-        base: main
-        title: "An automatically created PR!"
-    
-    - name: output
-      if: always()
-      run: echo ${{ steps.open_pr.outputs.pull_number }}
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Create Pull Request
+        run: gh pr create --title $PR_TITLE --body $PR_BODY --base main --head ${GITHUB_REF##*/}
