@@ -9,23 +9,16 @@ env:
   VCPKG_ROOT: '/usr/local/share/vcpkg'
 
 jobs:
-  check:
-    name: PR-testing
+  create-pr-on-push:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Open PR
-        id: open_pr
-        uses: rematocorp/open-pull-request-action@v1
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          from-branch: test-test-1
-          to-branch: main
-          repository-owner: pko-pako
-          repository: Tech-Exercises
-
-      - name: Echo mergeable PR number
-        if: always()
+    - uses: actions/checkout@4
+    
+    - name: Create pull request
+      uses: thomaseizinger/create-pull-request@master
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        head: ${{ github.ref }}
+        base: main
+        title: "An automatically created PR!"
         run: echo ${{ steps.open_pr.outputs.pull_number }}
