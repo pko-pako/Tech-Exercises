@@ -24,4 +24,4 @@ jobs:
           from-branch: test-test-1
           to-branch: main
           repository-owner: pko-pako
-          repository: Tech-Excercises
+          repository: Tech-Exercises
