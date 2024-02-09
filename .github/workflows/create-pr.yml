@@ -11,7 +11,7 @@ env:
 jobs:
   check:
     name: PR-testing
-    runs-on: ubuntu-latests
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
