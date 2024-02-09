@@ -19,6 +19,8 @@ jobs:
       - name: Try commiting something
         run: |
             echo "tosho" > ./tosho.txt
+            git config --global user.email "github-actions@example.com"
+            git config --global user.name "GitHub Actions"
             git add .
             git commit -m "Automated changes"
 
