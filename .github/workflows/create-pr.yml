@@ -23,4 +23,5 @@ jobs:
         title: "An automatically created PR!"
     
     - name: output
+      if: always()
       run: echo ${{ steps.open_pr.outputs.pull_number }}
