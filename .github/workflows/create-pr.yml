@@ -14,3 +14,5 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.PR_RIGHTS_GITHUB_TOKEN }}
+          branch: test-test-1
+          base: main  # Change this to your desired base branch
