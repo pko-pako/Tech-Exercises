@@ -2,6 +2,7 @@ name: Create Pull Request
 
 on:
   workflow_dispatch:
+  push:
     
 
 env:
@@ -15,6 +16,16 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+      
+      - name: Try commiting something
+        run: |
+           date +%s > ./tosho.txt
+           git config --global user.email "github-actions@example.com"
+           git config --global user.name "GitHub Actions"
+           git add .
+           git commit -m "Automated changes"
+           git pull
+           git push --set-upstream origin ${GITHUB_REF##*/}
 
       - name: Create Pull Request
         run: gh pr create --title $PR_TITLE --body $PR_BODY --base main --head ${GITHUB_REF##*/}
