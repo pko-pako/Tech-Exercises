@@ -16,6 +16,7 @@ jobs:
       
       - name: Try commiting something
         run: |
+           
            date +%s > ./tosho.txt
            git config --global user.name "github-actions"
            git config --global user.email "github-actions@github.com"
@@ -26,5 +27,5 @@ jobs:
 
       - name: Create Pull Request
         env: 
-            GH_TOKEN: ${{ secrets.PR_RIGHTS_GITHUB_TOKEN}}
+           GH_TOKEN: ${{ github.token }}
         run: gh pr create --title $PR_TITLE --body $PR_BODY --base main --head ${GITHUB_REF##*/}
