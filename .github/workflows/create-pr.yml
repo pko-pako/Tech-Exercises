@@ -2,8 +2,6 @@ name: Create Pull Request
 
 on:
   workflow_dispatch:
-  push:
-    
 
 env:
   GH_TOKEN: ${{ secrets.PR_RIGHTS_GITHUB_TOKEN}}
@@ -20,8 +18,8 @@ jobs:
       - name: Try commiting something
         run: |
            date +%s > ./tosho.txt
-           git config --global user.email "github-actions@example.com"
-           git config --global user.name "GitHub Actions"
+           git config --global user.email "github-actions[bot]@example.com"
+           git config --global user.name "GitHub Actions[bot]"
            git add .
            git commit -m "Automated changes"
            git pull
