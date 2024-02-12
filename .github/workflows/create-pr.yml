@@ -14,16 +14,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       
-      - name: Try commiting something
-        run: |
-           
-           date +%s > ./tosho.txt
-           git config --global user.name "github-actions"
-           git config --global user.email "github-actions@github.com"
-           git add .
-           git commit -m "Automated changes"
-           git pull
-           git push --set-upstream origin ${GITHUB_REF##*/}
+#      - name: Try commiting something
+#        run: |
+#           
+#           date +%s > ./tosho.txt
+#           git config --global user.name "github-actions"
+#           git config --global user.email "github-actions@github.com"
+#           git add .
+#           git commit -m "Automated changes"
+#           git pull
+#           git push --set-upstream origin ${GITHUB_REF##*/}
 
       - name: Create Pull Request
         env: 
