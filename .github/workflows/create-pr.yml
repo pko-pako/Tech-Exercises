@@ -18,8 +18,10 @@ jobs:
       - name: Try commiting something
         run: |
            date +%s > ./tosho.txt
+
            git config --global user.email "github-actions[bot]@example.com"
            git config --global user.name "GitHub Actions[bot]"
+
            git add .
            git commit -m "Automated changes"
            git pull
