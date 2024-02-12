@@ -19,12 +19,13 @@ jobs:
       
       - name: Try commiting something
         run: |
-            echo "tosho" > ./tosho.txt
-            git config --global user.email "github-actions@example.com"
-            git config --global user.name "GitHub Actions"
-            git add .
-            git commit -m "Automated changes"
-            git push --set-upstream origin ${GITHUB_REF##*/}
+           echo "tosho" > ./tosho.txt
+           git config --global user.email "github-actions@example.com"
+           git config --global user.name "GitHub Actions"
+           git add .
+           git commit -m "Automated changes"
+           git pull
+           git push --set-upstream origin ${GITHUB_REF##*/}
 
       - name: Create Pull Request
         run: gh pr create --title $PR_TITLE --body $PR_BODY --base main --head ${GITHUB_REF##*/}
