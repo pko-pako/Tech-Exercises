@@ -21,14 +21,14 @@ jobs:
       
       - name: Try commiting something
         run: |
-           git checkout -b upstream_sync_branch
+           git checkout -b upstream_sync_branch upstream/main
            git config --global user.email "github-actions@example.com"
            git config --global user.name "GitHub Actions"
            date +%s > ./tosho.txt
            git add .
            git commit -m "Automated changes"
            git pull
-           git push --set-upstream origin upstream_sync_branch
+           git push origin upstream_sync_branch
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
