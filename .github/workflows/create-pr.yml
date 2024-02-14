@@ -29,6 +29,6 @@ jobs:
          -H "Authorization: Bearer ${{env.GH_TOKEN}}" \
          -H "X-GitHub-Api-Version: 2022-11-28" \
          https://api.github.com/repos/pko-pako/Tech-Exercise/pulls \
-         -d '{"title":"Amazing new feature","body":"Please pull these awesome changes in!","head":"syncing","base":"main"}'
+         -d '{"title":"Amazing new feature","body":"Please pull these awesome changes in!","head":"pko-pako:syncing","base":"main"}'
                 
 
