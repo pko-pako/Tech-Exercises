@@ -15,7 +15,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PR_RIGHTS_GITHUB_TOKEN }}
       
       - name: Try commiting something
         run: |
@@ -28,4 +30,12 @@ jobs:
            git push --set-upstream origin ${GITHUB_REF##*/}
 
       - name: Create Pull Request
-        run: gh pr create --title $PR_TITLE --body $PR_BODY --base main --head ${GITHUB_REF##*/}
+        uses: peter-evans/create-pull-request@v6
+        with:
+          title: "title"
+          body: "body"
+          base: "main"
+          branch: upstream_sync_branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.PR_RIGHTS_GITHUB_TOKEN }}
+
