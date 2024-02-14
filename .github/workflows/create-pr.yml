@@ -27,7 +27,7 @@ jobs:
       - name: Create Pull Request
         run: |
           PR_POST_BODY="{
-            \"title\": \"${env.{PR_TITLE}}\",
+            \"title\": \"${{env.PR_TITLE}}\",
             \"body\": \"${{env.PR_BODY}}\",
             \"head\": \"upstream_sync_branch\",
             \"base\": \"${{env.PUBLIC_REPOSITORY}}\"
