@@ -14,6 +14,7 @@ env:
   PR_BODY: "This pull request syncs our fork with the latest changes from microsoft/vcpkg."
   BASE_BRANCH: "master"  # Specify the base branch for syncing
   PUBLIC_REPOSITORY: "https://github.com/microsoft/vcpkg.git" # Original repository
+  PRIVATE_REPOSITORY: "pko-pako/Tech-Exercises"
 
 jobs:
   create_pull_request:
@@ -26,13 +27,14 @@ jobs:
       - name: Create Pull Request
         run: |
           PR_POST_BODY="{
-            \"title\": \"${{PR_TITLE}}\",
-            \"body\": \"${{PR_BODY}}\",
+            \"title\": \"${env.{PR_TITLE}}\",
+            \"body\": \"${{env.PR_BODY}}\",
             \"head\": \"upstream_sync_branch\",
             \"base\": \"${{env.PUBLIC_REPOSITORY}}\"
           }"
+          API_URL="https://api.github.com/repos/"${{env.PRIVATE_REPOSITORY}}"/pulls"
           curl -X POST \
             -H "Authorization: token ${{ env.GH_TOKEN }}" \
             -H "Accept: application/vnd.github.v3+json" \
             -d "$PR_POST_BODY" \
-            "https://api.github.com/repos/pko-pako/Tech-Exercises/pulls"
+            $API_URL
