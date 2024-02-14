@@ -10,6 +10,8 @@ env:
   PR_BODY: updating-version
   PR_TITLE: updating-version
 
+permissions: write-all
+
 jobs:
   create_pull_request:
     runs-on: ubuntu-latest
