@@ -22,6 +22,8 @@ jobs:
       - name: Try commiting something
         run: |
            git checkout -b upstream_sync_branch
+           git config --global user.email "github-actions@example.com"
+           git config --global user.name "GitHub Actions"
            date +%s > ./tosho.txt
            git add .
            git commit -m "Automated changes"
