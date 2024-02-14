@@ -1,34 +1,28 @@
 name: Create Pull Request
 
 on:
-  workflow_dispatch:
   push:
-    
-
-env:
-  GH_TOKEN: ${{ secrets.PR_RIGHTS_GITHUB_TOKEN}}
-  PR_BODY: updating-version
-  PR_TITLE: updating-version
-
-permissions: write-all
+    branches:
+      - main  # Modify this according to your branch name
 
 jobs:
   create_pull_request:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.PR_RIGHTS_GITHUB_TOKEN }}
-      
-      - name: Create Pull Request
-        run: |
-         curl -L \
-         -X POST \
-         -H "Accept: application/vnd.github+json" \
-         -H "Authorization: Bearer ${{github.token}}" \
-         -H "X-GitHub-Api-Version: 2022-11-28" \
-         https://api.github.com/repos/pko-pako/Tech-Exercise/pulls \
-         -d '{"title":"Amazing new feature","body":"Please pull these awesome changes in!","head":"pko-pako:syncing","base":"main"}'
-                
 
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Create Pull Request
+      run: |
+        PR_BODY="{
+          \"title\": \"Your pull request title\",
+          \"body\": \"Your pull request description\",
+          \"head\": \"syncing\",
+          \"base\": \"main\"
+        }"
+        curl -X POST \
+          -H "Authorization: token ${{ secrets.PR_RIGHTS_GITHUB_TOKEN }}" \
+          -H "Accept: application/vnd.github.v3+json" \
+          -d "$PR_BODY" \
+          "https://api.github.com/repos/pko-pako/Tech-Exercises/pulls"
