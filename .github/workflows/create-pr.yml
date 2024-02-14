@@ -21,6 +21,7 @@ jobs:
       
       - name: Try commiting something
         run: |
+           git remote add upstream https://github.com/pko-pako/Tech-Exercieses.git
            git checkout -b upstream_sync_branch upstream/main
            git config --global user.email "github-actions@example.com"
            git config --global user.name "GitHub Actions"
