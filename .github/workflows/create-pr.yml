@@ -26,3 +26,4 @@ jobs:
           -H "Accept: application/vnd.github.v3+json" \
           -d "$PR_BODY" \
           "https://api.github.com/repos/pko-pako/Tech-Exercises/pulls"
+# djlkas klas
