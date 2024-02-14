@@ -1,31 +1,28 @@
 name: Create Pull Request
 
 on:
-  workflow_dispatch:
-
-env:
-  PR_BODY: updating-version
-  PR_TITLE: updating-version
+  push:
+    branches:
+      - main  # Modify this according to your branch name
 
 jobs:
   create_pull_request:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      
-      - name: Try commiting something
-        run: |
-           
-           date +%s > ./tosho.txt
-           git config --global user.name "github-actions"
-           git config --global user.email "github-actions@github.com"
-           git add .
-           git commit -m "Automated changes"
-           git pull
-           git push --set-upstream origin ${GITHUB_REF##*/}
 
-      - name: Create Pull Request
-        env: 
-           GH_TOKEN: ${{ github.token }}
-        run: gh pr create --title $PR_TITLE --body $PR_BODY --base main --head ${GITHUB_REF##*/}
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Create Pull Request
+      run: |
+        PR_BODY="{
+          \"title\": \"Your pull request title\",
+          \"body\": \"Your pull request description\",
+          \"head\": \"syncing\",
+          \"base\": \"main\"
+        }"
+        curl -X POST \
+          -H "Authorization: token ${{ secrets.PR_RIGHTS_GITHUB_TOKEN }}" \
+          -H "Accept: application/vnd.github.v3+json" \
+          -d "$PR_BODY" \
+          "https://api.github.com/repos/pko-pako/Tech-Exercises/pulls"
