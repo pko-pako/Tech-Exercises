@@ -29,8 +29,8 @@ jobs:
           PR_POST_BODY="{
             \"title\": \"${{env.PR_TITLE}}\",
             \"body\": \"${{env.PR_BODY}}\",
-            \"head\": \"upstream_sync_branch\",
-            \"base\": \"${{env.PUBLIC_REPOSITORY}}\"
+            \"head\": \"syncing\",
+            \"base\": \"${{env.BASE_BRANCH}}\"
           }"
           API_URL="https://api.github.com/repos/"${{env.PRIVATE_REPOSITORY}}"/pulls"
           curl -X POST \
