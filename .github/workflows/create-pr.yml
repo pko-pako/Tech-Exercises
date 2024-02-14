@@ -23,12 +23,10 @@ jobs:
         run: |
            git checkout -b upstream_sync_branch
            date +%s > ./tosho.txt
-           git config --global user.email "github-actions@example.com"
-           git config --global user.name "GitHub Actions"
            git add .
            git commit -m "Automated changes"
            git pull
-           git push --set-upstream origin ${GITHUB_REF##*/}
+           git push --set-upstream origin upstream_sync_branch
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
