@@ -19,25 +19,13 @@ jobs:
         with:
           token: ${{ secrets.PR_RIGHTS_GITHUB_TOKEN }}
       
-      - name: Try commiting something
-        run: |
-           git remote add upstream https://github.com/pko-pako/Tech-Exercieses.git
-           git checkout -b upstream_sync_branch
-           git config --global user.email "github-actions@example.com"
-           git config --global user.name "GitHub Actions"
-           date +%s > ./tosho.txt
-           git add .
-           git commit -m "Automated changes"
-           git pull
-           git push origin upstream_sync_branch
-
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
           title: "title"
           body: "body"
           base: "main"
-          branch: upstream_sync_branch
+          branch: "syncing"
         env:
           GITHUB_TOKEN: ${{ secrets.PR_RIGHTS_GITHUB_TOKEN }}
 
