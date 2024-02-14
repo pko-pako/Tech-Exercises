@@ -12,7 +12,7 @@ env:
   GH_TOKEN: ${{ secrets.PR_RIGHTS_GITHUB_TOKEN }} # this token has to have repo, workflow and org:read permissions
   PR_TITLE: "Sync with Upstream"
   PR_BODY: "This pull request syncs our fork with the latest changes from microsoft/vcpkg."
-  BASE_BRANCH: "master"  # Specify the base branch for syncing
+  BASE_BRANCH: "main"  # Specify the base branch for syncing
   PUBLIC_REPOSITORY: "https://github.com/microsoft/vcpkg.git" # Original repository
   PRIVATE_REPOSITORY: "pko-pako/Tech-Exercises"
 
