@@ -21,6 +21,7 @@ jobs:
       
       - name: Try commiting something
         run: |
+           git checkout -b upstream_sync_branch
            date +%s > ./tosho.txt
            git config --global user.email "github-actions@example.com"
            git config --global user.name "GitHub Actions"
