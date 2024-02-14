@@ -26,8 +26,8 @@ jobs:
         with:
           title: "title"
           body: "body"
-          base: "main"
-          branch: "syncing"
+          base: "syncing"
+          branch: "main"
         env:
           GITHUB_TOKEN: ${{ secrets.PR_RIGHTS_GITHUB_TOKEN }}
 
