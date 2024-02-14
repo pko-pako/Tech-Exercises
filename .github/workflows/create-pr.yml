@@ -3,7 +3,17 @@ name: Create Pull Request
 on:
   push:
     branches:
-      - main  # Modify this according to your branch name
+      - pr-creating-test
+  workflow_dispatch:
+  schedule:
+  - cron: '0 2 * * 1'
+  
+env:
+  GH_TOKEN: ${{ secrets.PR_RIGHTS_GITHUB_TOKEN }} # this token has to have repo, workflow and org:read permissions
+  PR_TITLE: "Sync with Upstream"
+  PR_BODY: "This pull request syncs our fork with the latest changes from microsoft/vcpkg."
+  BASE_BRANCH: "master"  # Specify the base branch for syncing
+  PUBLIC_REPOSITORY: "https://github.com/microsoft/vcpkg.git" # Original repository
 
 jobs:
   create_pull_request:
@@ -13,18 +23,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       
-#      - name: Try commiting something
-#        run: |
-#           
-#           date +%s > ./tosho.txt
-#           git config --global user.name "github-actions"
-#           git config --global user.email "github-actions@github.com"
-#           git add .
-#           git commit -m "Automated changes"
-#           git pull
-#           git push --set-upstream origin ${GITHUB_REF##*/}
-
       - name: Create Pull Request
-        env: 
-           GH_TOKEN: ${{ github.token }}
-        run: gh pr create --title $PR_TITLE --body $PR_BODY --base main --head ${GITHUB_REF##*/}
+        run: |
+          PR_POST_BODY="{
+            \"title\": \"${{PR_TITLE}}\",
+            \"body\": \"${{PR_BODY}}\",
+            \"head\": \"upstream_sync_branch\",
+            \"base\": \"${{env.PUBLIC_REPOSITORY}}\"
+          }"
+          curl -X POST \
+            -H "Authorization: token ${{ env.GH_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            -d "$PR_POST_BODY" \
+            "https://api.github.com/repos/pko-pako/Tech-Exercises/pulls"
