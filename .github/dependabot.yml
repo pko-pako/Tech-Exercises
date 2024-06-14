@@ -12,7 +12,7 @@ updates:
       timezone: Europe/Athens
 
   - package-ecosystem: gomod
-    directory: /
+    directory: "/Georgi**"
     schedule:
       interval: daily
       time: "13:50"
