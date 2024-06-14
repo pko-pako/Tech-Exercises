@@ -8,7 +8,7 @@ updates:
     schedule:
       # Check for updates to GitHub Actions every day
       interval: daily
-      time: "13:50"
+      time: "14:10"
       timezone: Europe/Athens
 
   - package-ecosystem: gomod
@@ -17,5 +17,5 @@ updates:
       - "/Georgi**/"
     schedule:
       interval: daily
-      time: "13:50"
+      time: "14:10"
       timezone: Europe/Athens
