@@ -4,4 +4,5 @@ import "github.com/beevik/etree"
 
 func main() {
 	etree.NewDocument()
+	
 }
