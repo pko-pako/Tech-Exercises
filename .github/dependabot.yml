@@ -12,7 +12,7 @@ updates:
       timezone: Europe/Athens
 
   - package-ecosystem: gomod
-    directory: 
+    directories: 
       - "/GeorgiPalaviq/"
       - "/Georgi**/"
     schedule:
