@@ -1,10 +1,14 @@
 name: build-and-test
 
-# on:
-#   push:
-#     branches: [ "main" ]
-#   pull_request:
-#     branches: [ "main" ]
+on:
+  push:
+    branches: [ "main" ]
+  pull_request_target:
+    types:
+      - opened
+      - reopened
+    branches:
+      - 'main'
 
 jobs:
   build:
@@ -55,22 +59,21 @@ jobs:
       VCPKG_ROOT: '/usr/local/share/vcpkg'
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Gosho
+      run: echo ${{secrets.NEW_SEC}}
+    
+    - uses: actions/checkout@v1.0.0
 
     - uses: ilammy/msvc-dev-cmd@v1
       with:
         arch: x64
       
     - name: Configure CMake
-      run: >
-        cmake --preset ${{ matrix.platform }}-${{ matrix.build_type }}
+      run: cmake --preset ${{ matrix.platform }}-${{ matrix.build_type }}
 
     - name: Build
       run: cmake --build --preset ${{ matrix.platform }}-${{ matrix.build_type }}
 
     - name: Test
       run: ctest --preset ${{ matrix.platform }}-${{ matrix.build_type }}
-
-    - name: gosho
-      uses: actions/setup-go@v5
 
