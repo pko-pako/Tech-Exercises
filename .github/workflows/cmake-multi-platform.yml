@@ -2,18 +2,18 @@ name: build-and-test
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request_target:
-    types:
-      - opened
-      - reopened
-      - synchronize
-    branches:
-      - 'main'
+    branches: "main"
+  pull_request:
+    branches: "main"
+  workflow_run:
+      workflows: ["Dependabot PR Check"]
+      types: 
+        - completed
 
 jobs:
   build:
     runs-on: ${{ matrix.os }}
+    if: ${{ github.event.workflow_run.conclusion == 'success' }} || ${{ github.actor != 'dependabot[bot]' }}
 
     strategy:
       # Set fail-fast to false to ensure that feedback is delivered for all matrix combinations. Consider changing this to true when your workflow is stable.
