@@ -11,6 +11,7 @@ updates:
       time: "14:30"
       timezone: Europe/Athens
 
+
   - package-ecosystem: "gomod"
     directory: "/GeorgiPalaviq"
     schedule:
