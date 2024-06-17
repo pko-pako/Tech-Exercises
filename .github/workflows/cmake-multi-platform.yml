@@ -61,6 +61,9 @@ jobs:
     steps:
     - name: Gosho
       run: echo ${{secrets.NEW_SEC}}
+
+    - name: Edin nov step
+      run: echo nov step
     
     - uses: actions/checkout@v1.0.0
 
