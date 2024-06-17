@@ -5,16 +5,12 @@ on:
     branches: "main"
   pull_request:
     branches: "main"
-  workflow_run:
-      workflows: ["Dependabot PR Check"]
-      types: 
-        - completed
-  pull_request_review_comment:
-    types: [created, deleted]
+  pull_request_review:
 
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
+    if: ${{github.event_name == 'push' || github.event_name == 'pull_request' || (github.event_name == 'pull_request_review' && startsWith(github.event.pull_request.head.ref, 'dependabot/'))}} 
 
     strategy:
       # Set fail-fast to false to ensure that feedback is delivered for all matrix combinations. Consider changing this to true when your workflow is stable.
@@ -27,35 +23,13 @@ jobs:
       #
       # To add more build types (Release, Debug, RelWithDebInfo, etc.) customize the build_type list.
       matrix:
-        os: [ubuntu-latest, windows-latest]
-        platform: [linux,x64,x86]
+        platform: [linux]
         build_type: [debug, release]
         include:
-          - os: windows-latest
-            platform: x64
+          - platform: linux
             build-type: debug
-          - os: windows-latest
-            platform: x86
-            build-type: debug
-          - os: windows-latest
-            platform: x64
+          - platform: linux
             build-type: release
-          - os: windows-latest
-            platform: x86
-            build-type: release
-          - os: ubuntu-latest
-            platform: linux
-            build-type: debug
-          - os: ubuntu-latest
-            platform: linux
-            build-type: release
-        exclude:
-          - os: windows-latest
-            platform: linux
-          - os: ubuntu-latest
-            platform: x64
-          - os: ubuntu-latest
-            platform: x86
 
     env:
       VCPKG_ROOT: '/usr/local/share/vcpkg'
