@@ -36,7 +36,7 @@ jobs:
     - name: Gosho
       run: echo ${{secrets.NEW_SEC}}
 
-    - uses: actions/checkout@v2.0.0
+    - uses: actions/checkout@v4.1.7
 
     - uses: ilammy/msvc-dev-cmd@v1
       with:
