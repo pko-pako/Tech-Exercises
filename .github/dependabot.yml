@@ -8,7 +8,7 @@ updates:
     schedule:
       # Check for updates to GitHub Actions every day
       interval: daily
-      time: "14:30"
+      time: "15:00"
       timezone: Europe/Athens
 
 
@@ -17,7 +17,7 @@ updates:
     schedule:
       # Check for updates to GitHub Actions every day
       interval: daily
-      time: "16:25"
+      time: "15:00"
       timezone: Europe/Athens
     commit-message:
       prefix: "[GeorgiPalaviq]"
@@ -27,7 +27,7 @@ updates:
     schedule:
       # Check for updates to GitHub Actions every day
       interval: daily
-      time: "16:25"
+      time: "15:00"
       timezone: Europe/Athens
     commit-message:
       prefix: "[GeorgiStefanov]"
