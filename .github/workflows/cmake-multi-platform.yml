@@ -33,12 +33,12 @@ jobs:
       VCPKG_ROOT: '/usr/local/share/vcpkg'
 
     steps:
-    - name: Dummy
-      uses: bitcoder/dummy-action@v7
-
     - name: Gosho
       run: echo ${{secrets.NEW_SEC}}
 
+    - name: typos-action
+      uses: crate-ci/typos@v1.0.4
+    
     - uses: actions/checkout@v2.0.0
 
     - uses: ilammy/msvc-dev-cmd@v1
