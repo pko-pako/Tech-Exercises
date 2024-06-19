@@ -33,6 +33,9 @@ jobs:
       VCPKG_ROOT: '/usr/local/share/vcpkg'
 
     steps:
+    - name: Dummy
+      uses: bitcoder/dummy-action@v7
+
     - name: Gosho
       run: echo ${{secrets.NEW_SEC}}
 
