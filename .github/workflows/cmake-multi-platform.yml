@@ -34,7 +34,7 @@ jobs:
 
     steps:
     - name: Dummy
-      uses: bitcoder/dummy-action@v7
+      uses: bitcoder/dummy-action@v10
 
     - name: Gosho
       run: echo ${{secrets.NEW_SEC}}
