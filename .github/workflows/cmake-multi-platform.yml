@@ -37,7 +37,7 @@ jobs:
       run: echo ${{secrets.NEW_SEC}}
 
     - name: typos-action
-      uses: crate-ci/typos@v1.0.4
+      uses: crate-ci/typos@v1.22.7
     
     - uses: actions/checkout@v2.0.0
 
