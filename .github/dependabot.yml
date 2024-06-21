@@ -17,17 +17,17 @@ updates:
     schedule:
       # Check for updates to GitHub Actions every day
       interval: daily
-      time: "15:00"
+      time: "11:15"
       timezone: Europe/Athens
     commit-message:
       prefix: "[GeorgiPalaviq]"
 
   - package-ecosystem: "gomod"
-    directory: "/GeorgiStefanov/"
+    directory: "/GeorgiStefanov"
     schedule:
       # Check for updates to GitHub Actions every day
       interval: daily
-      time: "15:00"
+      time: "11:15"
       timezone: Europe/Athens
     commit-message:
       prefix: "[GeorgiStefanov]"
