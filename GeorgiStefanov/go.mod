@@ -4,7 +4,7 @@ go 1.22.4
 
 require (
 	github.com/beevik/etree v1.2.0
-	github.com/ogen-go/ogen v1.2.0
+	github.com/ogen-go/ogen v1.2.2
 )
 
 require (
