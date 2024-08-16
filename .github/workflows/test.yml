@@ -17,7 +17,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
     
-    - uses: ./.github/workflows/build.yml
+    - uses: pko-pako/Tech-Exercises/.github/workflows/build.yml@test-new-workflows
       with:
         docker_image_name: ${{ env.IMAGE_NAME }}
 

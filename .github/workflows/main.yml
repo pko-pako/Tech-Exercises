@@ -16,6 +16,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: ./.github/workflows/build.yml
+    - uses: pko-pako/Tech-Exercises/.github/workflows/build.yml@test-new-workflows
       with:
         docker_image_name: env.IMAGE_NAME
