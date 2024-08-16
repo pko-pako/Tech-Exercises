@@ -26,7 +26,10 @@ target_include_directories(tech-exercises PUBLIC
     "${PROJECT_SOURCE_DIR}/include"
 )
 
-target_link_libraries(tech-exercises PRIVATE Boost::headers)
+target_link_libraries(tech-exercises PRIVATE Boost::headers "ws2_32.lib")
+
+ find_package(tinyxml2 CONFIG REQUIRED)
+target_link_libraries(tech-exercises PRIVATE tinyxml2::tinyxml2)
 
 target_link_libraries(tech-exercises
 PUBLIC 

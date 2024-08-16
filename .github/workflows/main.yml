@@ -9,18 +9,18 @@ on:
         - cron: '0 2 * * *' # every night at 2:00 AM
 
 env:
-    IMAGE_NAME: "NAME:DATE"
+  IMAGE_NAME: "NAME:DATE"
 
 jobs:
 
     build:
         uses: ./.github/workflows/build.yml
         with:
-            docker_image_name: ${{ env.IMAGE_NAME}}
+            docker_image_name: env.IMAGE_NAME
 
     integration-test:
-        if: ${{ github.event_name == 'schedule' }}
+        if: github.event_name == 'schedule'
         needs: build
         uses: ./.github/workflows/test.yml
         with:
-            docker_image_name: ${{env.IMAGE_NAME}}
+            docker_image_name: env.IMAGE_NAME

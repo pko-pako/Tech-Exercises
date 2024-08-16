@@ -8,6 +8,9 @@
     },
     {
       "name": "boost-asio"
+    },
+    {
+      "name": "tinyxml2"
     }
   ],
   "builtin-baseline": "a8954b904ad2a6939ecd8fc213e87702fa1243ea"

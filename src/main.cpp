@@ -1,19 +1,25 @@
+#include <string>
+#include <format>
 #include <iostream>
-#include <boost/asio.hpp>
+#include <map>
+#include "tinyxml2.h"
 
-#include "actionsStatic.h"
-#include "actionsDynamic.h"
+using std::cout;
+using std::endl;
+using namespace tinyxml2;
 
-int main(int argc, char *argv[])
-{
-   
-	
-	Tosho t(42);
+int main() {
+	struct capability
+	{
+		std::map<std::string, int> available_values;
+	};
+	std::map<std::string, capability> collectedCapabilities;
 
-   std::cout << "tosho is " << t.b << " 3+4=" << sum(3,4) << " 3 ravno li e na 3 = " << equals(3,3) <<std::endl;
-   std::cout << "7 po 4 e" << multiply(7,4) << std::endl;
+	std::string g = "gosho";
+	std::string poss = "123";
 
-   boost::asio::io_context io_context(1);
+	collectedCapabilities[g].available_values[poss]++;
 
-   return 0;
+	cout << collectedCapabilities[g].available_values[poss];
 }
+
