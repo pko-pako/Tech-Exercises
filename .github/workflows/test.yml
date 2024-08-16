@@ -9,11 +9,12 @@ on:
 env:
   IMAGE_NAME: "NAME:DATE"
 
+
 jobs:
   build:
     uses: ./.github/workflows/build.yml
     with:
-      docker_image_name: env.IMAGE_NAME
+      docker_image_name: NAME:DATE
 
   test:
     needs: build
