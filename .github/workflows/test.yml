@@ -16,6 +16,7 @@ jobs:
       docker_image_name: env.IMAGE_NAME
 
   test:
+    needs: build
     runs-on: ubuntu-latest
     steps:
 
