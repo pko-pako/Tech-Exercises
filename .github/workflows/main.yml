@@ -1,18 +1,21 @@
 name: My Workflow
 
 on:
-    push:
-        branches: [ "main" ]
-    pull_request:
-        branches: [ "main" ]
-    schedule:
-        - cron: '0 2 * * *' # every night at 2:00 AM
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  schedule:
+    - cron: '0 2 * * *' # every night at 2:00 AM
 
 env:
   IMAGE_NAME: "NAME:DATE"
 
 jobs:
-    build:
-        uses: ./.github/workflows/build.yml
-        with:
-            docker_image_name: env.IMAGE_NAME
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: ./.github/workflows/build.yml
+      with:
+        docker_image_name: env.IMAGE_NAME

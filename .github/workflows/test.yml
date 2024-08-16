@@ -1,8 +1,6 @@
 name: Integration Test Workflow
 
 on:
-    # schedule:
-    #     - cron: '0 2 * * *' # every night at 2:00 AM
     push:
         branches: [ "main" ]
     pull_request:
