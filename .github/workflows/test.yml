@@ -7,14 +7,14 @@ on:
         branches: [ "main" ]
 
 env:
-  IMAGE_NAME: "NAME:DATE"
+  IMAGE_NAME: "NAME-DATE"
 
 
 jobs:
   build:
     uses: ./.github/workflows/build.yml
     with:
-      docker_image_name: NAME:DATE
+      docker_image_name: NAME-DATE
 
   test:
     needs: build
