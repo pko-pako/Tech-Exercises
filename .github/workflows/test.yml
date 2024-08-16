@@ -19,8 +19,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
     
-    - name: Build
-      uses: ./.github/workflows/build.yml@main
+    - uses: ./.github/workflows/build.yml
       with:
         docker_image_name: ${{ env.IMAGE_NAME }}
 
