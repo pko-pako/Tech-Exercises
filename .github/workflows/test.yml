@@ -1,20 +1,33 @@
 name: Integration Test Workflow
 
 on:
-  workflow_call:
-    inputs:
-      docker_image_name:
-        description: 'Name of the Docker image'
-        required: true
-        type: string
+    push:
+        branches: [ "main" ]
+    pull_request:
+        branches: [ "main" ]
+
+env:
+  IMAGE_NAME: "NAME-DATE"
+
 
 jobs:
-  integration-test:
+  build:
+    uses: ./.github/workflows/build.yml
+    with:
+      docker_image_name: NAME-DATE
+
+  test:
+    needs: build
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
 
-    - name: Test
-      run: echo "Integration tests are running on ${{ github.run_id }} for ${{ github.repository }} with image ${{ github.event.inputs.docker_image_name }}"
+      - name: Get file from artifacts
+        uses: actions/download-artifact@v4.1.8
+        with:
+          name: ${{ env.IMAGE_NAME }}.txt
+
+      - name: Output file content to log
+        run: cat ${{ env.IMAGE_NAME }}.txt
+
+      - name: Test
+        run: echo "Integration tests are running on ${{ github.run_id }} for ${{ github.repository }} with image ${{ github.event.inputs.docker_image_name }}"

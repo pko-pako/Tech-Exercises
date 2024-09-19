@@ -18,3 +18,12 @@ jobs:
 
       - name: Test
         run: echo "Build is running on ${{ github.run_id }} for ${{ github.repository }} with image ${{ github.event.inputs.docker_image_name }}"
+
+      - name: Save file with image name
+        run: echo mara > ${{ inputs.docker_image_name }}.txt
+
+      - name: Upload file
+        uses: actions/upload-artifact@v4.3.6
+        with:
+          name: ${{ inputs.docker_image_name }}.txt
+          path: ${{ inputs.docker_image_name }}.txt

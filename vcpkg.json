@@ -5,9 +5,6 @@
   "dependencies": [
     {
       "name": "gtest"
-    },
-    {
-      "name": "boost-asio"
     }
   ],
   "builtin-baseline": "a8954b904ad2a6939ecd8fc213e87702fa1243ea"
